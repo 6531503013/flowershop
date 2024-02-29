@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../components/bottom_nav_bar.dart';
+import 'cart_page.dart';
+import 'shop_page.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,10 +12,122 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  //this select index is to control the bottom nav bar
+  int _selectedIndex = 0;
+
+  //this method ill update our selected index
+  //when the user tabs on the bottom bar
+  void navigateBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  //pages to display
+  final List<Widget> _pages = [
+    //shop page
+    const ShopPage(),
+
+    //cart page
+    const CartPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MyBottomNavBar(),
+      backgroundColor: Color.fromARGB(255, 248, 245, 238),
+      bottomNavigationBar: MyBottomNavBar(
+        onTabChange: (index) => navigateBottomBar(index),
+      ),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Icon(
+                Icons.menu,
+                color: Color.fromARGB(255, 194, 24, 91),
+              ),
+            ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.pink[100],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                //logo
+                DrawerHeader(
+                  child: Image.asset('lib/image/logo.jpg'),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Divider(
+                    color: Color.fromARGB(255, 248, 245, 238),
+                  ),
+                ),
+
+                //other page
+
+                //HOme in drawer
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.home,
+                      color: Color.fromARGB(255, 248, 245, 238),
+                    ),
+                    title: Text(
+                      'Home',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+
+                //About in drawer
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.info,
+                      color: Color.fromARGB(255, 248, 245, 238),
+                    ),
+                    title: Text(
+                      'About',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            //Logout in drawer
+            const Padding(
+              padding: EdgeInsets.only(left: 25.0, bottom: 25),
+              child: ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  color: Color.fromARGB(255, 248, 245, 238),
+                ),
+                title: Text(
+                  'Logout',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: _pages[_selectedIndex],
     );
   }
 }

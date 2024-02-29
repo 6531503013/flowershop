@@ -27,7 +27,7 @@ class IntroPage extends StatelessWidget {
 
                 //title
                 const Text(
-                  'All Thing Grow With Love',
+                  '💐All Thing Grow With Love💐',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
 
