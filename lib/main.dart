@@ -1,4 +1,7 @@
+import 'package:flowershop/models/cart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'models/cart.dart';
 
 import 'pages/Intro_page.dart';
 
@@ -11,7 +14,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: IntroPage());
+    return ChangeNotifierProvider(
+      create: (context) => Cart(),
+      builder: (context, child) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: IntroPage(),
+      ),
+    );
   }
 }
