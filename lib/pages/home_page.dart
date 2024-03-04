@@ -93,6 +93,36 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ),
 
+                //order in drawer
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.assignment,
+                      color: Color.fromARGB(255, 248, 245, 238),
+                    ),
+                    title: Text(
+                      'Order',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+
+                //eco (see flower details) in drawer
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.eco,
+                      color: Color.fromARGB(255, 248, 245, 238),
+                    ),
+                    title: Text(
+                      'Flower detail',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+
                 //About in drawer
                 const Padding(
                   padding: EdgeInsets.only(left: 25.0),
