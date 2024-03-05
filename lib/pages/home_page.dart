@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../components/bottom_nav_bar.dart';
 import 'cart_page.dart';
+import 'flower_details_page.dart';
 import 'shop_page.dart';
 
 class Homepage extends StatefulWidget {
@@ -109,7 +110,7 @@ class _HomepageState extends State<Homepage> {
                 ),
 
                 //eco (see flower details) in drawer
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 25.0),
                   child: ListTile(
                     leading: Icon(
@@ -120,6 +121,15 @@ class _HomepageState extends State<Homepage> {
                       'Flower detail',
                       style: TextStyle(color: Colors.white),
                     ),
+                    onTap: () {
+                      Navigator.pop(context); // Close the drawer
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                FlowerDetailsPage()), // Navigate to FlowerDetailsPage
+                      );
+                    },
                   ),
                 ),
 
