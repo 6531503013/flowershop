@@ -1,6 +1,6 @@
+import 'package:flowershop/components/image_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../components/ImageDetailPage.dart';
 import '../models/cart.dart';
 import '../models/flower.dart';
 
